@@ -35,38 +35,78 @@ class CSLTRun extends Thread {
                 //to allow stop from SCS
 
                 //TODO: YOUR CODE HERE
+                //TODO: CHECK THIS DOCUMENTATION TO UNDERSTAND HOW TO RUN THIS TRUCK
+                //TODO: AND HOW TO WRITE CODE:
+                //https://github.com/CONNEX-AB-Delivery-System/DS-CSLTruck/blob/master/README.md
 
-                //System.out.println("Current value" + DeliveryTruck.lineReader.getPIDValue());
 
-                System.out.println( "DTRun cmd " +  CSLTruck.inputCommandSCS );
-                Thread.sleep(500);
+                CSLTruck.craneLift.setSpeed(400);
+                CSLTruck.craneLift.backward();
+                Thread.sleep(6000);
+                CSLTruck.craneLift.stop(true);
 
-                System.out.println("Rotate motor " +  this.threadName );
-                CSLTruck.motorSteer.rotateTo(15, true);
-                Thread.sleep(500);
-                System.out.println("Rotate motor 2 " +  this.threadName );
-                CSLTruck.motorSteer.rotateTo(-20, true);
-                Thread.sleep(100);
+                Thread.sleep(1000);
 
-                /*DeliveryTruck.motorSteer.brake();
-                DeliveryTruck.motorSteer.setSpeed(100);
-                DeliveryTruck.motorSteer.forward();
-                Thread.sleep(200);
-                DeliveryTruck.motorSteer.stop();
+                CSLTruck.craneGrabber.setSpeed(300);
+                CSLTruck.craneGrabber.backward();
+                Thread.sleep(5000);
+                CSLTruck.craneGrabber.stop(true);
 
-                DeliveryTruck.motorSteer.setSpeed(100);
-                DeliveryTruck.motorSteer.backward();
-                Thread.sleep(200);
-                DeliveryTruck.motorSteer.stop();
 
-                DeliveryTruck.motorDrive.setSpeed(300);
-                DeliveryTruck.motorDrive.backward();
-                Thread.sleep(500);
-                DeliveryTruck.motorDrive.stop();*/
+                CSLTruck.craneLift.setSpeed(400);
+                CSLTruck.craneLift.forward();
+                Thread.sleep(5000);
+                CSLTruck.craneLift.stop(true);
+
+                Thread.sleep(2000);
+
+                CSLTruck.craneGrabber.setSpeed(300);
+                CSLTruck.craneGrabber.forward();
+                Thread.sleep(5000);
+                CSLTruck.craneGrabber.stop(true);
+
+                Thread.sleep(2000);
+
+                CSLTruck.craneLift.setSpeed(400);
+                CSLTruck.craneLift.backward();
+                Thread.sleep(15000);
+                CSLTruck.craneLift.stop(true);
+
+                Thread.sleep(4000);
+
+                CSLTruck.craneLift.setSpeed(400);
+                CSLTruck.craneLift.forward();
+                Thread.sleep(2000);
+                CSLTruck.craneLift.stop(true);
+
+
+
+
+
+                CSLTruck.motorDrive.stop(true);
+                CSLTruck.motorDrive.setSpeed(300);
+                CSLTruck.motorDrive.forward();
+                Thread.sleep(2000);
+                CSLTruck.motorDrive.stop(true);
+                Thread.sleep(2000);
+
+                CSLTruck.motorSteer.setSpeed(300);
+                CSLTruck.motorSteer.rotateTo(40, true);
+                Thread.sleep(2000);
+                CSLTruck.motorSteer.stop(true);
+                Thread.sleep(2000);
+
+
+
+
+
+                //System.out.println("LineReader value" + CSLTruck.lineReader.getPIDValue());
 
                 CSLTruck.runThreadIsExecuted = true;
                 CSLTruck.outputCommandSCS = "FINISHED";
-                System.out.println("Task executed");
+                System.out.println("Task Executed");
+
+
 
             }
 
